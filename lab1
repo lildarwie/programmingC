@@ -6,14 +6,14 @@ int main()
     double a,b,c,d,x1,x2;
     do
     {   
-    printf("vvedite a:");
-    scanf("%lf",&a);
-    printf("vvedite b:");
-    scanf("%lf",&b);
-    printf("vvedite c:");
-    scanf("%lf",&c);
-    d=b*b-4*a*c;
-    printf("d=%lf\n",d);
+        printf("vvedite a:");
+        scanf("%lf",&a);
+        printf("vvedite b:");
+        scanf("%lf",&b);
+        printf("vvedite c:");
+        scanf("%lf",&c);
+        d=b*b-4*a*c;
+        printf("d=%lf\n",d);
             if (d>0) 
         {
             x1=(-b+sqrt(d))/(2*a);
