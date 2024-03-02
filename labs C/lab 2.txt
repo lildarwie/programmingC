@@ -6,6 +6,109 @@ int main()
                               0, 0, 0, 
                               0, 0, 0};
 
+    printf("Массив 3x3 default:  %lf %lf %lf \n", massive3x3[0][0], massive3x3[0][1],massive3x3[0][2]);
+    printf("                     %lf %lf %lf \n", massive3x3[1][0], massive3x3[1][1],massive3x3[1][2]);
+    printf("                     %lf %lf %lf \n", massive3x3[2][0], massive3x3[2][1],massive3x3[2][2]);
+    printf("-----------------------------------------------------------------------------------\n \n");
+
+
+
+
+    double x =0, y =0, z =0;
+
+    printf("Введи целые числа для массива3x3, 1 stroka: ");
+    scanf("%lf %lf %lf", &x, &y, &z);
+
+    massive3x3[0][0] = x;
+    massive3x3[0][1] = y;
+    massive3x3[0][2] = z;
+
+    printf("Введи целые числа для массива3x3, 2 stroka: ");
+    scanf("%lf %lf %lf", &x, &y, &z);
+
+    massive3x3[1][0] = x;
+    massive3x3[1][1] = y;
+    massive3x3[1][2] = z;
+
+    printf("Введи целые числа для массива3x3, 3 stroka: ");
+    scanf("%lf %lf %lf", &x, &y, &z);
+
+    massive3x3[2][0] = x;
+    massive3x3[2][1] = y;
+    massive3x3[2][2] = z;
+
+
+
+
+
+    printf("Ваш массив 3x3: %lf %lf %lf \n", massive3x3[0][0], massive3x3[0][1],massive3x3[0][2]);
+    printf("                 %lf %lf %lf \n", massive3x3[1][0], massive3x3[1][1],massive3x3[1][2]);
+    printf("                 %lf %lf %lf \n", massive3x3[2][0], massive3x3[2][1],massive3x3[2][2]);
+    printf("-----------------------------------------------------------------------------------\n \n");
+
+    double GD = 0, PD = 0;
+
+    GD = massive3x3[0][0] + massive3x3[1][1] + massive3x3[2][2];
+    PD = massive3x3[0][2] + massive3x3[1][1] + massive3x3[2][0];
+
+    printf("Сумма числе по главной диагонали: %lf\n", GD);
+    printf("Сумма чисел по побочной диагонали: %lf\n", PD);
+    printf("-----------------------------------------------------------------------------------\n \n");
+
+
+    int massive2x2[2][2] = {0, 0,
+                            0, 0};
+
+
+    int o = 0, p = 0;
+
+    printf("Массив 2x2 default: %d %d\n", massive2x2[0][0], massive2x2[0][1]);
+    printf("                    %d %d\n", massive2x2[1][0], massive2x2[1][1]);
+
+
+    printf("Введи целые числа для массива 2x2, 1 строка: ");
+    scanf("%d %d", &o, &p);
+
+    massive2x2[0][0] = o; 
+    massive2x2[0][1] = p; 
+
+
+    printf("Введи целые числа для массива 2x2, 2 строка: ");
+    scanf("%d %d", &o, &p);
+
+    massive2x2[1][0] = o; 
+    massive2x2[1][1] = p;
+    printf("-----------------------------------------------------------------------------------\n \n");
+
+    printf("Ваш массив 2x2: %d %d\n", massive2x2[0][0], massive2x2[0][1]);
+    printf("                 %d %d\n", massive2x2[1][0], massive2x2[1][1]);
+
+
+
+
+
+    printf("Квадрат массива 2x2: \n");
+    for(int i = 0; i < 2; i++){
+        printf("%d ", massive2x2[0][i] * massive2x2[0][i]);
+    }
+    printf("\n");
+
+    for(int i = 0; i < 2; i++){
+        printf("%d ", massive2x2[1][i] * massive2x2[1][i]);
+        
+    }
+
+
+    getchar();
+    return 0;
+}#include <stdio.h>
+int main()
+{
+
+    double massive3x3[3][3]= {0, 0, 0, 
+                              0, 0, 0, 
+                              0, 0, 0};
+
     printf("massive3x3 default:  %lf %lf %lf \n", massive3x3[0][0], massive3x3[0][1],massive3x3[0][2]);
     printf("                     %lf %lf %lf \n", massive3x3[1][0], massive3x3[1][1],massive3x3[1][2]);
     printf("                     %lf %lf %lf \n", massive3x3[2][0], massive3x3[2][1],massive3x3[2][2]);
