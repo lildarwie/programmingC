@@ -1,7 +1,6 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <math.h>
-
+#include <stdbool.h>
 double P(double a, double b, double c)
 {
     double sum = a + b + c;
@@ -11,12 +10,12 @@ double P(double a, double b, double c)
 
 double S(double a, double b, double c)
 {
-    double result, p = (P(a, b, c) / 2);
-    result = sqrt(p * (p - a) * (p - b) * (p - c));
-    return result;
+    double s, p = (P(a, b, c) / 2);
+    s = sqrt(p * (p - a) * (p - b) * (p - c));
+    return s;
 }
 
-int yes_or_no (double a, double b, double c)
+bool yes_or_no (double a, double b, double c)
 {
     if (a <= 0 || b <= 0 || c <= 0) {
         return 0;

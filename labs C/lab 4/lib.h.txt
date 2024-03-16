@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <math.h>
+#include <stdbool.h>
 double P(double a, double b, double c);
 
 double S(double a, double b, double c);
 
-int yes_or_no (double a, double b, double c);
+bool yes_or_no (double a, double b, double c);
