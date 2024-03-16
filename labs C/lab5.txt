@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main()
+{
+     int i, j, N=3, M=3;
+    printf("Vvedite razmer matrix1: ");
+    scanf("%d", &N);
+    double matrix1[N][N];
+    for (i=0;i<N; i++){
+        for (j=0; j<N; j++){
+            printf("matrix1[%d][%d]", i+1, j+1);
+            scanf("%lf", &matrix1[i][j]);
+        }
+    }
+    printf("Vvedite razmer matrix2: ");
+    scanf("%d", &M);
+    double matrix2[M][M];
+    for (i=0;i<M; i++){
+        for (j=0; j<M; j++){
+            printf("matrix2[%d][%d]", i+1, j+1);
+            scanf("%lf", &matrix2[i][j]);
+}
+}
+    return 0;
+}
