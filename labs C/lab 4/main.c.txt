@@ -22,9 +22,10 @@ int main()
         printf("P = %.3lf\n", perimetr);
         ploshad = S(a, b, c);
         printf("S = %.3lf\n", ploshad);
+        printf("True\n");
     }
     else {
-        printf("Ne syshestvyet\n");
+        printf("false\n");
     }
     
     return 0;
