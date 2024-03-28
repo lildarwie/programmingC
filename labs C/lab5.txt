@@ -9,7 +9,7 @@ int main()
     for (i=0;i<N; i++){
         for (j=0; j<N; j++){
             printf("matrix1[%d][%d]", i+1, j+1);
-            scanf("%lf", &matrix1[i][j]);
+            scanf("%lf", &matrix1[i][j]);   
         }
     }
     printf("Vvedite razmer matrix2: ");
