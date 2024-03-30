@@ -1,26 +1,54 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int main()
 {
-     int i, j, N=3, M=3;
+    int i, j, N, M;
+   
     printf("Vvedite razmer matrix1: ");
     scanf("%d", &N);
-    double matrix1[N][N];
+    double **m = (double **)malloc(N * sizeof(double *)); // выделение памяти под массив указателей
+    for (i=0;i<N; i++){
+        m[i] = (double *)malloc(N * sizeof(double)); // выделение памяти под строки матрицы
+    }
     for (i=0;i<N; i++){
         for (j=0; j<N; j++){
-            printf("matrix1[%d][%d]", i+1, j+1);
-            scanf("%lf", &matrix1[i][j]);   
+            printf("m[%d][%d]", i+1, j+1);
+            scanf("%lf", &m[i][j]);
         }
+    }
+    for (i=0;i<N; i++){
+        for (j=0; j<N; j++){
+            printf("%lf ", m[i][j]);
+        }
+        printf("\n");
     }
     printf("Vvedite razmer matrix2: ");
     scanf("%d", &M);
-    double matrix2[M][M];
+    double **matrix2 = (double **)malloc(M * sizeof(double *)); // выделение памяти под массив указателей
+    for (i=0;i<M; i++){
+        matrix2[i] = (double *)malloc(M * sizeof(double)); // выделение памяти под строки матрицы
+    }
     for (i=0;i<M; i++){
         for (j=0; j<M; j++){
             printf("matrix2[%d][%d]", i+1, j+1);
             scanf("%lf", &matrix2[i][j]);
-}
-}
+        }
+    }
+    for (i=0;i<M; i++){
+        for (j=0; j<M; j++){
+            printf("%lf ", matrix2[i][j]);
+        }
+        printf("\n");
+    }
+    // освобождение памяти
+    for (i=0;i<N; i++){
+        free(m[i]);
+    }
+    free(m);
+    for (i=0;i<M; i++){
+        free(matrix2[i]);
+    }
+    free(matrix2);
     return 0;
 }
-
