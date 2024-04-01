@@ -1,16 +1,17 @@
 #include <stdio.h>
+#include <math.h>
+#include "func.h"
 #include <stdlib.h>
-
 
 int main()
 {
+    char c;
     int i, j, N, M;
-   
     printf("Vvedite razmer matrix1: ");
     scanf("%d", &N);
-    double **m = (double **)malloc(N * sizeof(double *)); // выделение памяти под массив указателей
+    double **m = (double ** )malloc(N * sizeof(double *)); 
     for (i=0;i<N; i++){
-        m[i] = (double *)malloc(N * sizeof(double)); // выделение памяти под строки матрицы
+        m[i] = (double *)malloc(N * sizeof(double)); 
     }
     for (i=0;i<N; i++){
         for (j=0; j<N; j++){
@@ -26,9 +27,9 @@ int main()
     }
     printf("Vvedite razmer matrix2: ");
     scanf("%d", &M);
-    double **matrix2 = (double **)malloc(M * sizeof(double *)); // выделение памяти под массив указателей
+    double **matrix2 = (double ** )malloc(M * sizeof(double *)); 
     for (i=0;i<M; i++){
-        matrix2[i] = (double *)malloc(M * sizeof(double)); // выделение памяти под строки матрицы
+        matrix2[i] = (double *)malloc(M * sizeof(double)); 
     }
     for (i=0;i<M; i++){
         for (j=0; j<M; j++){
@@ -42,7 +43,29 @@ int main()
         }
         printf("\n");
     }
-    // освобождение памяти
+    double **result(int N, int M, double **m, double **matrix2);
+    printf("введите '+','-','*':");
+    scanf("%s", &c);
+    if(c=='+'){
+    **result == **plus;
+    
+    printf("\n");
+    }
+    
+    
+    
+    double **m3 = plus(N,M, m, matrix2);
+    printf("Matrix3:\n");
+    for (i=0;i<M; i++){
+        for (j=0; j<M; j++){
+            
+            printf("%lf ", m3[i][j]);
+        }
+        printf("\n");
+    }
+    
+    
+     
     for (i=0;i<N; i++){
         free(m[i]);
     }
@@ -51,5 +74,7 @@ int main()
         free(matrix2[i]);
     }
     free(matrix2);
+    
+    
     return 0;
 }
