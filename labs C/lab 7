@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct {
+    char name[20];
+    char surname[20];
+    int year;
+} humen;
+
+int compare(const void *a, const void *b) {
+    const humen *humen_a = a;
+    const humen *humen_b = b;
+    return humen_a->year - humen_b->year;
+}
+
+int main() {
+    humen arr1[4];
+    humen arr2[4];
+
+    for (int i = 0; i < 4; i++) {
+        printf("Enter name: ");
+        scanf("%s", arr1[i].name);
+        printf("Enter surname: ");
+        scanf("%s", arr1[i].surname);
+        printf("Enter year of birth: ");
+        scanf("%d", &arr1[i].year);
+    }
+
+    qsort(arr1, 4, sizeof(humen), compare);
+
+    memcpy(arr2, arr1, sizeof(humen) * 4);
+
+    for (int i = 0; i < 4; i++) {
+        printf("%s %s %d\n", arr2[i].name, arr2[i].surname, arr2[i].year);
+    }
+
+    return 0;
+}

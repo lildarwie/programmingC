@@ -3,13 +3,14 @@
 #include "func.h"
 #include <stdlib.h>
 
-int main()
+int main(char c)
 {
-    char c;
+    
     int i, j, N, M;
+    double **m, **matrix2;
     printf("Vvedite razmer matrix1: ");
     scanf("%d", &N);
-    double **m = (double ** )malloc(N * sizeof(double *)); 
+    m = (double **)malloc(N * sizeof(double *)); 
     for (i=0;i<N; i++){
         m[i] = (double *)malloc(N * sizeof(double)); 
     }
@@ -27,7 +28,7 @@ int main()
     }
     printf("Vvedite razmer matrix2: ");
     scanf("%d", &M);
-    double **matrix2 = (double ** )malloc(M * sizeof(double *)); 
+    matrix2 = (double **)malloc(M * sizeof(double *)); 
     for (i=0;i<M; i++){
         matrix2[i] = (double *)malloc(M * sizeof(double)); 
     }
@@ -43,26 +44,49 @@ int main()
         }
         printf("\n");
     }
-    double **result(int N, int M, double **m, double **matrix2);
-    printf("введите '+','-','*':");
+   
+   printf("vvesti znacenie +,-,*  \n ");
     scanf("%s", &c);
-    if(c=='+'){
-    **result == **plus;
+
+    if (c == '+')
+    {
     
-    printf("\n");
-    }
-    
-    
-    
-    double **m3 = plus(N,M, m, matrix2);
-    printf("Matrix3:\n");
-    for (i=0;i<M; i++){
-        for (j=0; j<M; j++){
-            
-            printf("%lf ", m3[i][j]);
+       double  **matrix3 = plus(N, M, m, matrix2);
+
+        for (int i = 0; i < N; i++)
+        {
+            for (int j = 0; j < N; j++)
+            {
+                printf("%.2lf ", matrix3[i][j]);
+            }
+            printf("\n");
         }
-        printf("\n");
     }
+        else if (c == '-'){
+         double  **matrix3 = minus(N, M, m, matrix2);
+
+        for (int i = 0; i < N; i++)
+        {
+            for (int j = 0; j < N; j++)
+            {
+                printf("%.2lf ", matrix3[i][j]);
+            }
+            printf("\n");
+        }   
+        }
+        else if (c == '*'){
+         double  **matrix3 = mult(N, M, m, matrix2);
+
+        for (int i = 0; i < N; i++)
+        {
+            for (int j = 0; j < N; j++)
+            {
+                printf("%.2lf ", matrix3[i][j]);
+            }
+            printf("\n");
+        }   
+        }
+    
     
     
      
