@@ -1,0 +1,23 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+int main()
+{
+FILE *f1,*f2;
+char str[80];
+char year[5];
+f1=fopen("people.txt","r");
+f2=fopen("people_out.txt","w");
+ while (fgets(str, sizeof(str), f1))
+    {
+        sscanf(str, "%*s %*s %*s %4s", year);
+        int birth_year = atoi(year);
+        if (birth_year > 1980)
+        {
+            fputs(str, f2);
+        }
+    }
+ fclose(f1);
+ fclose(f2);
+return 0;
+}
