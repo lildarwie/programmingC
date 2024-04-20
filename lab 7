@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct humen {
+    char name[50];
+    char surname[50];
+    char birth_year[10];
+};
+
+int main() {
+    int n=0;
+    char s[100];
+
+    FILE *f1; 
+    f1= fopen("people.txt", "r");
+    
+    while (fgets(s,100,f1)!=NULL)
+    {
+        n++;
+    }
+    fclose(f1);
+    f1= fopen("people.txt", "r");
+    
+        struct humen people[n];
+    for (int i = 0; i < n; i++) {
+        
+        fscanf(f1, "%s %s %s", people[i].name, people[i].surname, people[i].birth_year);
+        
+    }
+
+   
+
+    for (int i = 0; i < n-1; i++) {
+        
+        for (int j = 0; j < n - i-1; j++) {
+            if (strcmp(people[j].birth_year, people[j + 1].birth_year) > 0) {
+                struct humen temp = people[j];
+                people[j] = people[j + 1];
+                people[j + 1] = temp;
+            }
+        }
+    }
+    printf("N=%d",n);
+
+    printf("\nSorted by birth_year:\n");
+    for (int i = 0; i < n; ++i) {
+        printf("%s %s, birth_year: %s\n", people[i].name, people[i].surname, people[i].birth_year);
+    }
+  
+    return 0;
+}
