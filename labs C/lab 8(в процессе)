@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct humen {
+    char name[50];
+    char surname[50];
+    int year;
+    char gender;
+    float height;
+};
+
+int main() {
+    int compare_humen(const void *a, const void *b) {
+    humen *ha = (humen *)a;
+    humen *hb = (humen *)b;
+
+    
+    int sort_by = 0;
+    printf("Enter the sorting criteria (1: name, 2: surname, 3: year, 4: gender, 5: height): ");
+    scanf("%d", &sort_by);
+    
