@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
+float calculate_expression(const char *expression) {
+    float num1, num2;
+    char operator;
+
+    // Tokenize the expression using strtok
+    char *token = strtok( (char *)expression, " ");
+    num1 = strtof(token, NULL);
+
+    while ((token = strtok(NULL, " ")) != NULL) {
+        operator = *token;
+        token = strtok(NULL, " ");
+        num2 = strtof(token, NULL);
+
+        switch (operator) {
+            case '+':
+                num1 += num2;
+                break;
+            case '-':
+                num1 -= num2;
+                break;
+            default:
+                printf("Invalid operator: %c\n", operator);
+                exit(1);
+        }
+    }
+
+    return num1;
+}
+
+int main() {
+    char input[100];
+
+    printf("Enter an arithmetic expression: ");
+    fgets(input, sizeof(input), stdin);
+    input[strcspn(input, "\n")] = '\0'; // Remove newline character
+
+    printf("Result: %.2f\n", calculate_expression(input));
+
+    return 0;
+}
