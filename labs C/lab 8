@@ -1,0 +1,64 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct {
+    char name[50];
+    int dob;
+    char gender;
+    float height;
+} Record;
+
+int compare_records(const void *a, const void *b) {
+    Record *ra = (Record *)a;
+    Record *rb = (Record *)b;
+
+    // Prompt the user to enter the sorting criteria
+    int sort_by = 0;
+    printf("Enter the sorting criteria (0: name, 1: dob, 2: gender, 3: height): ");
+    scanf("%d", &sort_by);
+
+    // Sort by name
+    if (sort_by == 0) {
+        return strcmp(ra->name, rb->name);
+    }
+    // Sort by dob
+    else if (sort_by == 1) {
+        return ra->dob - rb->dob;
+    }
+    // Sort by gender
+    else if (sort_by == 2) {
+        return ra->gender - rb->gender;
+    }
+    // Sort by height
+    else if (sort_by == 3) {
+        return ra->height - rb->height;
+    }
+    // Invalid sorting criteria
+    else {
+        return 0;
+    }
+}
+
+int main() {
+    FILE *fp;
+    Record records[100];
+    int num_records = 0;
+
+    // Read the records from a file
+    fp = fopen("records.txt", "r");
+    while (fscanf(fp, "%s %d %c %f\n", records[num_records].name, &records[num_records].dob, &records[num_records].gender, &records[num_records].height) != EOF) {
+        num_records++;
+    }
+    fclose(fp);
+
+    // Sort the records
+    qsort(records, num_records, sizeof(Record), compare_records);
+
+    // Print the sorted records
+    for (int i = 0; i < num_records; i++) {
+        printf("%s %d %c %f\n", records[i].name, records[i].dob, records[i].gender, records[i].height);
+    }
+
+    return 0;
+}
