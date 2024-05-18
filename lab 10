@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <string.h>
+#include <limits.h>
+
+#define MAX_NUM(arr, n) _MAX_NUM(&arr, n)
+
+int _MAX_NUM(int *arr, int n) {
+    int i, max = INT_MIN;
+    for (i = 0; i < n; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+    }
+    return max;
+}
+
+int main() {
+    char str[100];
+    printf("Vvedite chisla v stroku cherez probel: ");
+    fgets(str, sizeof(str), stdin);
+    str[strcspn(str, "\n")] = '\0';
+    int arr[100], i, len = 0;
+    sscanf(str, "%d", &arr[len++]);
+    for (i = 0; i < strlen(str); i++) {
+        if (str[i] == ' ') {
+            sscanf(str + i + 1, "%d", &arr[len++]);
+        }
+    }
+    int max = MAX_NUM(arr, len);
+    printf("Maximal'noe chislo: %d\n", max);
+    return 0;
+}
