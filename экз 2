@@ -1,0 +1,64 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int main() {
+    int n;
+    printf("Введите размер массива: ");
+    scanf("%d", &n);
+ time_t start, end;
+    start=time(NULL);
+    int* arr = (int*)malloc(n * sizeof(int));
+
+    for (int i = 0; i < n; i++) {
+        arr[i] = i; 
+    }
+
+    FILE* f1 = fopen("input.txt", "w");
+    if (f1 == NULL) {
+        printf("Ошибка открытия файла input.txt\n");
+        return 1;
+    }
+
+    for (int i = 0; i < n; i++) {
+        arr[i]= rand()%100;
+        fprintf(f1, "%d ", arr[i]);
+    }
+    fprintf(f1, "\n");
+
+    fclose(f1);
+
+    FILE *f2 = fopen("output.txt", "w");
+    if (f2 == NULL) {
+        printf("Ошибка открытия файла output.txt\n");
+        return 1;
+    }
+
+    FILE *f1_read = fopen("input.txt", "r");
+    if (f1_read == NULL) {
+        printf("Ошибка открытия файла input.txt для чтения\n");
+        fclose(f2);
+        return 1;
+    }
+
+    int num;
+    while (fscanf(f1_read, "%d", &num) == 1) {
+        if (num % 5 == 0 && num % 7 == 0) {
+            fprintf(f2, "ПЯТЬСЕМЬ\n");
+        } else if (num % 5 == 0) {
+            fprintf(f2, "ПЯТЬ\n");
+        } else if (num % 7 == 0) {
+            fprintf(f2, "СЕМЬ\n");
+        } else {
+            fprintf(f2, "%d\n", num);
+        }
+    }
+
+    fclose(f1_read);
+    fclose(f2);
+
+    free(arr);
+end=time(NULL);
+    printf("Vremya: %f secund", difftime(end,start));
+    return 0;
+}
