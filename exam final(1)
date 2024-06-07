@@ -6,12 +6,12 @@
 int main() {
     int N;
     FILE *input_file, *output_file;
-    time_t start, end;
-    start=time(NULL);
+    
     printf("vvedite N: ");
     scanf("%d", &N);
     int M = (int)sqrt(N);
-
+time_t start, end;//начало отсчета времени
+    start=time(NULL);
 
  
     input_file = fopen("input.txt", "w");
@@ -25,7 +25,7 @@ int main() {
 
     for (int i = 0; i < N; i++) {
     for (int j = 0; j < M; j++) {
-        fprintf(input_file, "%d ", rand() % 100);
+        fprintf(input_file, "%d ", rand() % 100); //рандом чисел
     }
     fprintf(input_file, "\n");
 }
@@ -33,6 +33,9 @@ int main() {
 
     fclose(input_file);
 
+ 
+ 
+ //заменение чисел на слова
  
     input_file = fopen("input.txt", "r");
     if (input_file == NULL) {
@@ -63,6 +66,8 @@ int main() {
 
     fclose(input_file);
     fclose(output_file);
+    
+    //матрицы
     
  
     input_file = fopen("input.txt", "r");
@@ -117,7 +122,7 @@ for (j = 0; j < M; j++) {
 }
     printf("\n");
     end=time(NULL);
-    printf("Vremya: %f secund", difftime(end,start));
+    printf("Время: %f секунд", difftime(end,start)); //конец отсчета времени
     fclose(input_file);
 
     return 0;
