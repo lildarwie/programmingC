@@ -1,0 +1,160 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+double multiply_matrices(int **matrix1, int **matrix2, int **result, int n, int m, int p) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < p; j++) {
+            result[i][j] = 0;
+            for (int k = 0; k < m; k++) {
+                result[i][j] += matrix1[i][k] * matrix2[k][j];
+            }
+        }
+    }
+}
+
+double add_matrices(int **matrix1, int **matrix2, int **result, int n, int m) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            result[i][j] = matrix1[i][j] + matrix2[i][j];
+        }
+    }
+}
+
+int main() {
+    time_t start, end;//начало отсчета времени
+    start=time(NULL);
+    int n, m; 
+    printf("Введите размер матрицы (n x m): ");
+    scanf("%d %d", &n, &m);
+
+    FILE *file = fopen("input.txt", "w");
+    if (file == NULL) {
+        printf("Ошибка открытия файла\n");
+        return 1;
+    }
+
+    srand(time(NULL)); 
+
+    int **matrix1, **matrix2, **result_add, **result_mul; 
+
+    matrix1 = (int **)malloc(n * sizeof(int *));
+    for (int i = 0; i < n; i++) {
+        matrix1[i] = (int *)malloc(m * sizeof(int));
+    }
+
+    matrix2 = (int **)malloc(n * sizeof(int *));
+    for (int i = 0; i < n; i++) {
+        matrix2[i] = (int *)malloc(m * sizeof(int));
+    }
+
+    result_add = (int **)malloc(n * sizeof(int *));
+    for (int i = 0; i < n; i++) {
+        result_add[i] = (int *)malloc(m * sizeof(int));
+    }
+
+    result_mul = (int **)malloc(n * sizeof(int *));
+    for (int i = 0; i < n; i++) {
+        result_mul[i] = (int *)malloc(m * sizeof(int));
+    }
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            matrix1[i][j] = rand() % 100;
+            matrix2[i][j] = rand() % 100;
+        }
+    }
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            fprintf(file, "%d ", matrix1[i][j]);
+        }
+        fprintf(file, "\n");
+    }
+
+    fprintf(file, "\n"); 
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            fprintf(file, "%d ", matrix2[i][j]);
+        }
+        fprintf(file, "\n");
+    }
+
+    fclose(file); 
+
+    add_matrices(matrix1, matrix2, result_add, n, m);
+    multiply_matrices(matrix1, matrix2, result_mul, n, m, m);
+
+    FILE *file_out = fopen("output.txt", "w");
+    if (file_out == NULL) {
+        printf("Ошибка открытия файла\n");
+        return 1;
+    }
+fprintf(file_out,"Результат сложения:\n");
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            
+            fprintf(file_out, "%d ", result_add[i][j]);
+        }
+        fprintf(file_out, "\n");
+    }
+
+    fprintf(file_out, "\n"); 
+fprintf(file_out,"Результат умножения:\n");
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            
+            fprintf(file_out, "%d ", result_mul[i][j]);
+        }
+        fprintf(file_out, "\n");
+    }
+    printf("1\n");
+    int min;
+    int k[6];
+    
+    for(int j=0; j<m; j++) {
+        min= matrix1[0][j];
+        
+    for (int i=0; i<n; i++){
+        
+        if(min>matrix1[i][j]){
+            
+            min=matrix1[i][j];
+            k[j]=min;
+            printf("%d\n",k[j]);
+        }
+    }
+    
+    }
+
+    fclose(file_out); 
+
+    for (int i = 0; i < n; i++) {
+        free(matrix1[i]);
+    }
+    free(matrix1);
+
+    for (int i = 0; i < n; i++) {
+        free(matrix2[i]);
+    }
+    free(matrix2);
+
+    for (int i = 0; i < n; i++) {
+        free(result_add[i]);
+    }
+    free(result_add);
+
+    for (int i = 0; i < n; i++) {
+        free(result_mul[i]);
+    }
+    free(result_mul);
+    
+    
+    
+end=time(NULL);
+    printf("Vremya: %f secund", difftime(end,start)); //конец отсчета времени
+  
+    return 0;
+}
+
